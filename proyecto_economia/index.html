@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNFV - Control de Asistencia y Disciplina | Economía 2026</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Encabezado Institucional UNFV -->
+  <header>
+    <div class="brand-container">
+      <img src="logo_unfv.png" alt="Logo UNFV" class="logo-unfv">
+      <div class="brand-title">
+        <h1>UNIVERSIDAD NACIONAL FEDERICO VILLARREAL</h1>
+        <p>Facultad de Educación | Computación e Informática — Curso: Economía (2026)</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Controles y Selección de Meses -->
+  <div class="controls-bar">
+    <div class="month-selector">
+      <button class="btn-month active" onclick="changeMonth('OCTUBRE')">OCTUBRE</button>
+      <button class="btn-month" onclick="changeMonth('NOVIEMBRE')">NOVIEMBRE</button>
+      <button class="btn-month" onclick="changeMonth('DICIEMBRE')">DICIEMBRE</button>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-act btn-pdf" onclick="generateReportPDF()"><i class="fas fa-file-pdf"></i> Reporte Mesa de Partes (PDF)</button>
+      <button class="btn-act btn-reset" onclick="resetData()"><i class="fas fa-rotate-left"></i> Reiniciar Datos</button>
+    </div>
+  </div>
+
+  <!-- Métricas Estadísticas -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <i class="fas fa-users icon-orange"></i>
+      <div>
+        <div class="stat-val" id="stat-total">38</div>
+        <div class="stat-lbl">Alumnos Registrados</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-user-check icon-green"></i>
+      <div>
+        <div class="stat-val" id="stat-present">0</div>
+        <div class="stat-lbl">Asistencias Totales</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-user-times icon-red"></i>
+      <div>
+        <div class="stat-val" id="stat-absent">0</div>
+        <div class="stat-lbl">Faltas Registradas</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-triangle-exclamation icon-yellow"></i>
+      <div>
+        <div class="stat-val" id="stat-bad">0</div>
+        <div class="stat-lbl">Sanciones Indisciplina</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Encabezado Especial para Impresión Oficial de Mesa de Partes -->
+  <div class="print-header">
+    <div class="print-logo-row">
+      <img src="logo_unfv.png" alt="Logo UNFV" class="print-logo">
+      <div>
+        <h2 style="margin: 0; font-size: 1.3rem;">UNIVERSIDAD NACIONAL FEDERICO VILLARREAL</h2>
+        <p style="margin: 2px 0; font-size: 0.9rem;">FACULTAD DE EDUCACIÓN | COMPUTACIÓN E INFORMÁTICA</p>
+      </div>
+    </div>
+    <hr style="border: 1px solid #f26522; margin: 10px 0 15px 0;">
+    <h3 style="text-align: center; margin-bottom: 5px; font-size: 1.1rem;">OFICIO MÚLTIPLE N° 048-2026-UNFV/FE-ECI</h3>
+    <p style="text-align: center; margin: 0; font-size: 0.9rem;"><strong>INFORME OFICIAL DE CONTROL DE ASISTENCIA Y DISCIPLINA</strong></p>
+    <p style="text-align: center; margin: 2px 0 15px 0; font-size: 0.85rem;">Curso: Economía (Año Académico 2026) | Mes: <span id="print-month-name">OCTUBRE</span></p>
+  </div>
+
+  <!-- Tabla de Registros -->
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 50px;">N°</th>
+          <th style="text-align: left; padding-left: 20px;">APELLIDOS Y NOMBRES (EDITABLE)</th>
+          <th>CLASE 1</th>
+          <th>CLASE 2</th>
+          <th>CLASE 3</th>
+          <th>CLASE 4</th>
+          <th>ASIST. (P)</th>
+          <th>FALTAS (F)</th>
+          <th>SANCIÓN (M)</th>
+          <th>PROMEDIO</th>
+        </tr>
+      </thead>
+      <tbody id="students-tbody">
+        <!-- Renderizado dinámico vía JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
